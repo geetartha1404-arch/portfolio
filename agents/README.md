@@ -10,11 +10,15 @@ A specialized team of AI agents, each with a focused role in building your portf
 |---|---|---|
 | `@architect` | System Architect | Project structure, Next.js setup, routing |
 | `@designer` | UI/UX Designer | Visual design, Tailwind, design system |
+| `@frontend-pro` | Creative Designer | High-end aesthetics, Pro Max UI/UX |
 | `@content` | Content Strategist | Copy, bio, project descriptions |
 | `@seo` | SEO Engineer | Metadata, performance, Core Web Vitals |
 | `@animator` | Motion Designer | Framer Motion, transitions, interactions |
 | `@dev` | Frontend Developer | Component code, TypeScript, React |
-| `@reviewer` | QA & Code Reviewer | Audits, accessibility, best practices |
+| `@reviewer-pro` | QA Specialist | Vercel design guidelines, accessibility |
+| `@marketing-pro` | Growth Strategist | CRO, marketing copy, launch strategy |
+| `@mobile-pro` | Mobile Developer | React Native, platform optimization |
+
 
 ---
 

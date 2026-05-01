@@ -15,11 +15,15 @@ The Agent Manager is the **control center** for your portfolio build. It decides
 |---|---|---|
 | `@architect` | `agents/architect.md` | Project setup, Next.js config, folder structure |
 | `@designer` | `agents/designer.md` | Tailwind design system, colors, typography |
+| `@frontend-pro` | `agents/frontend-pro.md` | High-end UI/UX, distinctive aesthetics, Pro Max design |
 | `@content` | `agents/content.md` | Copy, bio, `lib/data.ts`, resume parsing |
 | `@dev` | `agents/dev.md` | React components, TypeScript, page assembly |
 | `@animator` | `agents/animator.md` | Framer Motion, scroll reveals, hover effects |
 | `@seo` | `agents/seo.md` | Metadata, sitemap, structured data, performance |
-| `@reviewer` | `agents/reviewer.md` | Code quality, accessibility, final audit |
+| `@reviewer-pro` | `agents/reviewer-pro.md` | Vercel design guidelines, QA, accessibility audit |
+| `@marketing-pro` | `agents/marketing-pro.md` | Conversion, CRO, growth strategy, copywriting |
+| `@mobile-pro` | `agents/mobile-pro.md` | React Native, mobile performance, platform optimization |
+
 
 ---
 
@@ -232,5 +236,5 @@ PHASE 4 — SHIP
 [x] Content complete
 [x] Responsive verified
 [x] Reviewer signed off
-[ ] Deployed to Vercel
+[x] Deployed to Vercel
 ```

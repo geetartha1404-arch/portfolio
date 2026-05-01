@@ -9,8 +9,8 @@ export default function Card({ hover = true, className, children, ...props }: Ca
   return (
     <div
       className={cn(
-        "rounded-2xl border border-border bg-surface p-6 shadow-[0_2px_12px_rgba(0,0,0,0.06)]",
-        hover && "transition-all duration-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.10)] hover:-translate-y-1",
+        "rounded-2xl border border-white/40 bg-white/60 backdrop-blur-xl p-6 shadow-glass relative overflow-hidden group",
+        hover && "transition-all duration-500 hover:shadow-glass-hover hover:-translate-y-1 hover:bg-white/80",
         className
       )}
       {...props}

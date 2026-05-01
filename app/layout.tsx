@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import "@/styles/globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -11,8 +11,15 @@ const inter = Inter({
   display: "swap",
 });
 
+const poppins = Poppins({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   title: {
     default: "Geetartha Borpatra Gohain | AI Automation & Digital Marketing",
     template: "%s | Geetartha B. Gohain",
@@ -57,8 +64,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
-      <body className="min-h-screen flex flex-col bg-background text-foreground antialiased">
+    <html lang="en" className={`${inter.variable} ${poppins.variable}`} suppressHydrationWarning>
+      <body className="min-h-screen flex flex-col bg-background text-text-primary antialiased">
         <Navbar />
         {children}
         <Footer />

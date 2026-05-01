@@ -15,15 +15,15 @@ export default function SectionHeader({
   const itemAlign = align === "center" ? "mx-auto" : "";
 
   return (
-    <div className={`mb-12 max-w-2xl ${alignClass}`}>
+    <div className={`mb-16 max-w-2xl ${alignClass}`}>
       {eyebrow && (
-        <p className={`text-xs uppercase tracking-widest text-text-muted mb-2 ${itemAlign}`}>
+        <p className={`text-sm uppercase tracking-[0.2em] font-medium text-primary mb-3 ${itemAlign}`}>
           {eyebrow}
         </p>
       )}
-      <h2 className={`text-3xl font-bold text-text-primary mb-4 ${itemAlign}`}>{title}</h2>
+      <h2 className={`text-4xl md:text-5xl font-bold tracking-tight text-text-primary mb-6 ${itemAlign}`}>{title}</h2>
       {subtitle && (
-        <p className={`mt-3 text-lg text-text-secondary max-w-xl ${itemAlign}`}>{subtitle}</p>
+        <p className={`text-lg md:text-xl text-text-secondary max-w-xl leading-relaxed ${itemAlign}`}>{subtitle}</p>
       )}
     </div>
   );

@@ -43,8 +43,8 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-24">
-      <div className="container mx-auto px-4 max-w-4xl">
+    <section id="contact" className="py-16">
+      <div className="max-w-5xl mx-auto px-4 w-full">
         <FadeUp>
           <div className="mb-12 text-center">
             <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-2">

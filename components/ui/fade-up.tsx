@@ -3,11 +3,16 @@
 import { motion, useReducedMotion, Variants } from "framer-motion";
 
 const fadeUpVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
+    transition: { 
+      type: "spring",
+      damping: 25,
+      stiffness: 100,
+      duration: 0.8
+    },
   },
 };
 

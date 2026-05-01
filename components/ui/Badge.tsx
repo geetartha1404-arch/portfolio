@@ -7,12 +7,12 @@ interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
 
 export default function Badge({ variant = "default", className, children, ...props }: BadgeProps) {
   const variants = {
-    default: "bg-indigo-50 text-primary",
-    tech: "bg-indigo-50 text-primary",
-    status: "bg-amber-50 text-[#B45309]", // amber-700 approx
-    outline: "border border-border text-text-primary",
-    success: "bg-emerald/10 text-emerald",
-    warning: "bg-amber/10 text-amber",
+    default: "bg-primary/10 text-primary border border-primary/20",
+    tech: "bg-white/60 backdrop-blur-sm text-text-primary border border-white/80 shadow-sm",
+    status: "bg-amber/10 text-[#B45309] border border-amber/20",
+    outline: "border border-border/60 text-text-primary bg-white/40 backdrop-blur-sm",
+    success: "bg-emerald/10 text-emerald border border-emerald/20",
+    warning: "bg-amber/10 text-amber border border-amber/20",
   };
 
   return (

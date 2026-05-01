@@ -24,7 +24,7 @@ export default function Navbar() {
           : "bg-transparent"
       )}
     >
-      <nav className="container mx-auto flex items-center justify-between px-4 h-16">
+      <nav className="max-w-5xl mx-auto flex items-center justify-between px-4 h-16 w-full">
         {/* Logo */}
         <Link href="/" className="font-bold text-lg tracking-tight flex items-center gap-1">
           <span className="text-primary">GBG</span>

@@ -6,15 +6,23 @@ const containerVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.1,
+      staggerChildren: 0.12,
+      delayChildren: 0.2,
     },
   },
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 25 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { 
+      type: "spring",
+      damping: 25,
+      stiffness: 100,
+    } 
+  },
 };
 
 export function StaggerContainer({
