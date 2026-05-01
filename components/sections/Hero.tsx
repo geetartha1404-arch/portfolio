@@ -37,8 +37,8 @@ export default function Hero() {
         {/* Content Group */}
         <div className="flex flex-col gap-4 max-w-4xl">
           <FadeUp delay={0.2}>
-            <h1 className="text-6xl sm:text-7xl md:text-8xl font-bold tracking-tight leading-[0.9] text-text-primary">
-              {personalInfo.shortName}
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-tight text-text-primary">
+              Welcome to my Portfolio
               <span className="text-primary">.</span>
             </h1>
           </FadeUp>
