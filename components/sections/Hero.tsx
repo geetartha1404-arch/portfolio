@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { personalInfo, socialLinks } from "@/lib/data";
 import { ArrowDown, Download, Link2, Mail } from "lucide-react";
 import { FadeUp } from "@/components/ui/fade-up";
@@ -12,7 +13,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-10"
     >
       {/* Background patterns */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -22,98 +23,93 @@ export default function Hero() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-[0.05]" />
       </div>
 
-      <div className="max-w-5xl mx-auto px-6 flex flex-col items-center text-center gap-8 w-full">
-        {/* Eyebrow */}
-        <FadeUp delay={0.1}>
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/10 bg-primary/5 px-4 py-2 text-[10px] font-bold tracking-widest uppercase text-primary mb-2 shadow-sm backdrop-blur-md">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-            </span>
-            Available for new projects
-          </div>
-        </FadeUp>
+      <div className="max-w-7xl mx-auto px-6 w-full flex flex-col md:flex-row items-center gap-12 md:gap-8">
+        
+        {/* Left Content */}
+        <div className="flex-1 flex flex-col justify-center items-start pt-10 md:pt-0">
+          <FadeUp delay={0.1}>
+            <div className="flex gap-8 mb-12">
+              <div className="flex flex-col">
+                <span className="text-3xl font-bold text-text-primary">+50</span>
+                <span className="text-xs text-text-secondary uppercase tracking-wider">Workflows automated</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-3xl font-bold text-text-primary">+10</span>
+                <span className="text-xs text-text-secondary uppercase tracking-wider">Projects delivered</span>
+              </div>
+            </div>
+          </FadeUp>
 
-        {/* Content Group */}
-        <div className="flex flex-col gap-4 max-w-4xl">
           <FadeUp delay={0.2}>
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-tight text-text-primary">
-              Welcome to my Portfolio
-              <span className="text-primary">.</span>
+            <h1 className="text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] font-bold tracking-tighter leading-none text-text-primary mb-6">
+              Hello<span className="text-primary">.</span>
             </h1>
           </FadeUp>
 
           <FadeUp delay={0.3}>
-            <p className="text-2xl sm:text-3xl font-medium text-text-secondary tracking-tight">
-              {personalInfo.title}
-            </p>
+            <div className="flex items-center gap-4 mb-16">
+              <div className="w-8 h-[2px] bg-primary"></div>
+              <p className="text-xl sm:text-2xl font-medium text-text-secondary tracking-tight">
+                - It's {personalInfo.name.split(' ')[0]}, {personalInfo.title.toLowerCase()}
+              </p>
+            </div>
           </FadeUp>
 
           <FadeUp delay={0.4}>
-            <p className="text-lg sm:text-xl text-text-secondary/80 max-w-2xl mx-auto leading-relaxed text-pretty">
-              {personalInfo.tagline}
-            </p>
+            <a
+              href="#about"
+              className="group flex items-center gap-3 text-text-primary font-medium hover:text-primary transition-colors"
+            >
+              <span className="text-sm uppercase tracking-widest">Scroll down</span>
+              <ArrowDown className="h-4 w-4 animate-bounce" />
+            </a>
           </FadeUp>
         </div>
 
-        {/* CTAs */}
-        <FadeUp delay={0.5}>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-4">
-            <Link
-              href="#projects"
-              className="group relative inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-bold text-white shadow-premium transition-all hover:scale-[1.03] hover:shadow-xl active:scale-[0.98] overflow-hidden"
+        {/* Right Content - Image */}
+        <div className="flex-1 w-full max-w-lg md:max-w-none relative flex justify-center items-center">
+          <FadeUp delay={0.3} className="w-full h-full flex justify-center items-center">
+            <div 
+              className="relative aspect-square md:aspect-[4/5] w-full max-w-[600px] mix-blend-multiply"
+              style={{
+                maskImage: 'radial-gradient(circle at center, black 50%, transparent 80%)',
+                WebkitMaskImage: 'radial-gradient(circle at center, black 50%, transparent 80%)'
+              }}
             >
-              <span className="relative z-10">View My Work</span>
-              <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-            </Link>
-            <a
-              href={personalInfo.resumeUrl}
-              download
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-white/50 px-8 py-4 text-sm font-bold text-text-primary backdrop-blur-md transition-all hover:bg-white hover:border-primary/20 hover:scale-[1.03] active:scale-[0.98] shadow-sm"
-            >
-              <Download className="h-4 w-4" />
-              Get Resume
-            </a>
-          </div>
-        </FadeUp>
-
-        {/* Social Dock */}
-        <FadeUp delay={0.6}>
-          <div className="flex items-center gap-2 p-2 rounded-2xl bg-white/30 backdrop-blur-xl border border-border/50 shadow-premium mt-4">
-            {socialLinks.map((link) => {
-              const Icon = iconMap[link.icon];
-              return (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  aria-label={link.label}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 rounded-xl text-text-secondary hover:text-primary hover:bg-primary/5 transition-all"
-                >
-                  {Icon && <Icon className="h-5 w-5" />}
-                </a>
-              );
-            })}
-          </div>
-        </FadeUp>
-
-        {/* Scroll cue */}
-        <FadeUp delay={0.8}>
-          <a
-            href="#about"
-            aria-label="Scroll to About"
-            className="group flex flex-col items-center gap-2 mt-12 text-text-muted hover:text-primary transition-colors"
-          >
-            <span className="text-[10px] font-bold tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity">Discover More</span>
-            <div className="flex flex-col items-center">
-              <div className="w-[1px] h-12 bg-gradient-to-b from-primary/50 to-transparent animate-pulse" />
-              <ArrowDown className="h-4 w-4 mt-2 animate-bounce" />
+              <Image 
+                src="/images/profile-bw.jpg" 
+                alt={personalInfo.name}
+                fill
+                priority
+                quality={100}
+                unoptimized
+                className="object-cover scale-[1.15] md:scale-[1.25] origin-center"
+              />
             </div>
-          </a>
-        </FadeUp>
+          </FadeUp>
+          
+          {/* Social Dock Floating on Image */}
+          <FadeUp delay={0.6} className="absolute bottom-6 right-6 z-10">
+            <div className="flex flex-row items-center gap-2 p-2 rounded-2xl bg-white/60 backdrop-blur-xl border border-white/20 shadow-premium">
+              {socialLinks.map((link) => {
+                const Icon = iconMap[link.icon];
+                return (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    aria-label={link.label}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 rounded-xl text-text-secondary hover:text-primary hover:bg-white transition-all shadow-sm"
+                  >
+                    {Icon && <Icon className="h-5 w-5" />}
+                  </a>
+                );
+              })}
+            </div>
+          </FadeUp>
+        </div>
       </div>
     </section>
   );
 }
-

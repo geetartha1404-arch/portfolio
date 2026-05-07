@@ -11,12 +11,11 @@ import type {
 export const personalInfo = {
   name: "Geetartha Borpatra Gohain",
   shortName: "Geetartha",
-  title: "AI Automation & Digital Marketing Specialist",
-  tagline: "Where healthcare meets AI — I build systems that actually work.",
+  title: "Radiographer & AI Automation Specialist",
+  tagline: "Bridging the gap between healthcare, patient care, and AI technology.",
   bio: [
-    "I'm a BSc Radiography graduate from Assam down town University with a growing footprint in AI automation and digital marketing. My background gives me a rare perspective: I understand both the clinical context of healthcare data and the technical tools to act on it.",
-    "I build no-code and low-code AI workflows, automate repetitive digital tasks with Python, and apply machine learning thinking to real business problems. I've shipped automation pipelines for healthtech companies, scraped and structured data at scale, and migrated 1,000+ content assets programmatically.",
-    "I'm actively looking for opportunities at the intersection of AI, healthcare technology, and digital automation — where I can contribute immediately and grow into a leadership role over time.",
+    "I am eager to begin my career in radiography within an environment where I can gain extensive knowledge, learn from experienced professionals, and delve deep into the field.",
+    "I aim to contribute to the advancement of healthcare through my dedication, with a long-term aspiration to evolve into a management position in the healthcare sector to serve humanity with specialized knowledge."
   ],
   location: "Guwahati, Assam, India",
   email: "geetgohain14@gmail.com",
@@ -115,6 +114,15 @@ export const skills: SkillCategory[] = [
       "LLM Fine-tuning",
     ],
   },
+  {
+    category: "Soft Skills",
+    skills: [
+      "Communication Skills",
+      "Problem Solving Skills",
+      "Active Listening",
+      "Management Skills",
+    ],
+  },
 ];
 
 // ─── Experience ────────────────────────────────────────────────────────────
@@ -201,7 +209,7 @@ export const projects: Project[] = [
       "Workflow Design",
       "Process Optimization",
     ],
-    imageUrl: "/images/projects/healthtech-ai-workflow.png",
+    imageUrls: [],
     featured: true,
     year: 2025,
   },
@@ -219,7 +227,7 @@ export const projects: Project[] = [
       "Google Sheets API",
       "Content Migration",
     ],
-    imageUrl: "/images/projects/blog-migration.png",
+    imageUrls: [],
     featured: true,
     year: 2025,
   },
@@ -238,7 +246,10 @@ export const projects: Project[] = [
       "Claude Code",
       "Data Extraction",
     ],
-    imageUrl: "/images/projects/web-scraper.png",
+    imageUrls: [
+      "/images/projects/Web_Scrape.jpeg",
+      "/images/projects/Web_Scrape2.jpeg"
+    ],
     githubUrl: "https://github.com",
     featured: true,
     year: 2024,
@@ -258,9 +269,63 @@ export const projects: Project[] = [
       "Oncology",
       "Systematic Review",
     ],
-    imageUrl: "/images/projects/cancer-review.png",
+    imageUrls: [],
     featured: false,
     year: 2024,
+  },
+  {
+    slug: "emozi-gpts",
+    title: "Custom GPTs for Content & Operations",
+    summary:
+      "Created multiple GPTs in ChatGPT for image generation, blog writing, etc.",
+    description:
+      "Designed and configured multiple specialized GPTs within ChatGPT tailored for Emozi Technologies. These models streamline internal processes including image generation, blog writing, and various content creation workflows.",
+    tags: [
+      "Generative AI",
+      "ChatGPT",
+      "Prompt Engineering",
+      "Automation",
+    ],
+    imageUrls: ["/images/projects/Custom_GPT.jpeg"],
+    featured: true,
+    year: 2025,
+  },
+  {
+    slug: "emozi-digital-website",
+    title: "Emozi Digital Website",
+    summary:
+      "Built an immersive yet simplistic website for Emozi Digital.",
+    description:
+      "Developed an immersive and simplistic website for Emozi Digital. Focused on delivering a seamless user experience and highlighting the agency's digital services effectively.",
+    tags: [
+      "Web Development",
+      "Web Design",
+      "Digital Marketing",
+    ],
+    liveUrl: "https://www.emozidigital.com",
+    imageUrls: [
+      "/images/projects/Web_page.jpeg",
+      "/images/projects/Web_Building.jpeg",
+      "/images/projects/Web_Hosting.jpeg"
+    ],
+    featured: false,
+    year: 2025,
+  },
+  {
+    slug: "emozi-admin-panel",
+    title: "Emozi Digital Admin Panel",
+    summary:
+      "Increased client acquisition and management system efficiency by building an Admin panel.",
+    description:
+      "Developed a comprehensive Admin panel for Emozi Digital, designed to increase client acquisition rates and improve the overall efficiency of their management systems.",
+    tags: [
+      "Web Development",
+      "Management System",
+      "Admin Panel",
+    ],
+    imageUrls: ["/images/projects/Admin_panel.jpeg"],
+    featured: false,
+    year: 2025,
   },
 ];
 

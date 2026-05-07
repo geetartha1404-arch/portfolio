@@ -2,6 +2,7 @@ import { projects } from "@/lib/data";
 import { ExternalLink, GitFork } from "lucide-react";
 import { FadeUp } from "@/components/ui/fade-up";
 import { StaggerContainer, StaggerItem } from "@/components/ui/stagger-container";
+import { ImageSlider } from "@/components/ui/ImageSlider";
 
 export default function Projects() {
   const featured = projects.filter((p) => p.featured);
@@ -32,19 +33,25 @@ export default function Projects() {
               key={project.slug}
               className="group glass-card rounded-3xl overflow-hidden flex flex-col hover:-translate-y-2 transition-all duration-500"
             >
-              {/* Abstract Gradient Header */}
-              <div className={`h-48 relative overflow-hidden flex items-center justify-center`}>
-                <div className={`absolute inset-0 opacity-20 group-hover:scale-110 transition-transform duration-700 ${
-                  idx % 4 === 0 ? "bg-gradient-to-br from-primary via-blue-400 to-emerald-400" :
-                  idx % 4 === 1 ? "bg-gradient-to-br from-amber-400 via-orange-400 to-primary" :
-                  idx % 4 === 2 ? "bg-gradient-to-br from-emerald-400 via-teal-400 to-blue-400" :
-                  "bg-gradient-to-br from-purple-400 via-primary to-blue-400"
-                }`} />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.4)_0%,transparent_100%)]" />
-                <div className="relative z-10 text-text-primary/10 font-black text-6xl tracking-tighter select-none group-hover:scale-125 transition-transform duration-500 group-hover:text-primary/20">
-                  0{idx + 1}
+              {/* Header: Image Slider or Abstract Gradient */}
+              {project.imageUrls && project.imageUrls.length > 0 ? (
+                <div className="h-48 sm:h-56 relative overflow-hidden bg-black/10">
+                  <ImageSlider images={project.imageUrls} />
                 </div>
-              </div>
+              ) : (
+                <div className={`h-48 sm:h-56 relative overflow-hidden flex items-center justify-center`}>
+                  <div className={`absolute inset-0 opacity-20 group-hover:scale-110 transition-transform duration-700 ${
+                    idx % 4 === 0 ? "bg-gradient-to-br from-primary via-blue-400 to-emerald-400" :
+                    idx % 4 === 1 ? "bg-gradient-to-br from-amber-400 via-orange-400 to-primary" :
+                    idx % 4 === 2 ? "bg-gradient-to-br from-emerald-400 via-teal-400 to-blue-400" :
+                    "bg-gradient-to-br from-purple-400 via-primary to-blue-400"
+                  }`} />
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.4)_0%,transparent_100%)]" />
+                  <div className="relative z-10 text-text-primary/10 font-black text-6xl tracking-tighter select-none group-hover:scale-125 transition-transform duration-500 group-hover:text-primary/20">
+                    0{idx + 1}
+                  </div>
+                </div>
+              )}
 
               <div className="p-8 flex flex-col gap-4 flex-1">
                 <div className="flex items-start justify-between gap-4">
@@ -122,27 +129,34 @@ export default function Projects() {
               {rest.map((project) => (
                 <StaggerItem
                   key={project.slug}
-                  className="glass-card rounded-2xl p-6 flex flex-col gap-4 hover:-translate-y-1 transition-all"
+                  className="glass-card rounded-2xl overflow-hidden flex flex-col hover:-translate-y-1 transition-all"
                 >
-                  <div className="flex items-start justify-between gap-4">
-                    <h3 className="font-bold text-lg leading-tight text-text-primary">
-                      {project.title}
-                    </h3>
-                    <span className="flex-shrink-0 text-[10px] font-bold text-text-muted">
-                      {project.year}
-                    </span>
+                  {project.imageUrls && project.imageUrls.length > 0 && (
+                    <div className="w-full h-40 relative border-b border-border/50 bg-black/10">
+                      <ImageSlider images={project.imageUrls} />
+                    </div>
+                  )}
+                  <div className="p-6 flex flex-col gap-4 flex-1">
+                    <div className="flex items-start justify-between gap-4">
+                      <h3 className="font-bold text-lg leading-tight text-text-primary">
+                        {project.title}
+                      </h3>
+                      <span className="flex-shrink-0 text-[10px] font-bold text-text-muted">
+                        {project.year}
+                      </span>
+                    </div>
+                    <p className="text-sm text-text-secondary leading-relaxed flex-1">{project.summary}</p>
+                    <ul className="flex flex-wrap gap-2">
+                      {project.tags.slice(0, 3).map((tag) => (
+                        <li
+                          key={tag}
+                          className="text-[10px] font-bold text-primary uppercase tracking-wider"
+                        >
+                          #{tag}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <p className="text-sm text-text-secondary leading-relaxed flex-1">{project.summary}</p>
-                  <ul className="flex flex-wrap gap-2">
-                    {project.tags.slice(0, 3).map((tag) => (
-                      <li
-                        key={tag}
-                        className="text-[10px] font-bold text-primary uppercase tracking-wider"
-                      >
-                        #{tag}
-                      </li>
-                    ))}
-                  </ul>
                 </StaggerItem>
               ))}
             </StaggerContainer>

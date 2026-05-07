@@ -1,20 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { Oswald } from "next/font/google";
 import "@/styles/globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { PersonJsonLd } from "@/components/seo/json-ld";
 
-const inter = Inter({
+const oswald = Oswald({
   subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const poppins = Poppins({
-  weight: ["400", "500", "600", "700"],
-  subsets: ["latin"],
-  variable: "--font-poppins",
+  variable: "--font-oswald",
   display: "swap",
 });
 
@@ -64,7 +57,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${oswald.variable}`} suppressHydrationWarning>
       <body className="min-h-screen flex flex-col bg-background text-text-primary antialiased">
         <Navbar />
         {children}

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ExternalLink, GitFork, ArrowLeft } from "lucide-react";
 import PageWrapper from "@/components/layout/PageWrapper";
+import { ImageSlider } from "@/components/ui/ImageSlider";
 
 export async function generateMetadata({
   params,
@@ -23,7 +24,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${project.title} | Geetartha Borpatra Gohain`,
       description: project.summary,
-      images: project.imageUrl ? [{ url: project.imageUrl }] : [],
+      images: project.imageUrls && project.imageUrls.length > 0 ? [{ url: project.imageUrls[0] }] : [],
     },
   };
 }
@@ -98,13 +99,18 @@ export default async function ProjectPage({
           </div>
         )}
 
-        {/* Image Placeholder if no image */}
-        {!project.imageUrl && (
+        {/* Image Display */}
+        {!project.imageUrls?.length ? (
           <div className="w-full h-64 sm:h-96 bg-gradient-to-br from-primary/10 via-secondary to-primary/5 rounded-xl flex items-center justify-center text-6xl mb-12 select-none">
             {project.slug === "healthtech-ai-workflow" && "🤖"}
             {project.slug === "blog-migration-automation" && "📋"}
             {project.slug === "python-web-scraper" && "🐍"}
             {project.slug === "ai-rectal-cancer-review" && "🔬"}
+            {!["healthtech-ai-workflow", "blog-migration-automation", "python-web-scraper", "ai-rectal-cancer-review"].includes(project.slug) && "✨"}
+          </div>
+        ) : (
+          <div className="w-full h-64 sm:h-96 relative rounded-xl overflow-hidden mb-12 bg-black/10">
+            <ImageSlider images={project.imageUrls} />
           </div>
         )}
 
