@@ -1,21 +1,19 @@
 import { projects } from "@/lib/data";
 import { ExternalLink, GitFork } from "lucide-react";
 import { FadeUp } from "@/components/ui/fade-up";
-import { StaggerContainer, StaggerItem } from "@/components/ui/stagger-container";
 import { ImageSlider } from "@/components/ui/ImageSlider";
 
 export default function Projects() {
-  const featured = projects.filter((p) => p.featured);
-  const rest = projects.filter((p) => !p.featured);
+  const featuredProjects = projects.filter((p) => p.featured);
 
   return (
-    <section id="projects" className="py-16 relative overflow-hidden">
+    <section id="projects" className="py-24 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute bottom-0 left-0 -z-10 w-1/4 h-1/4 bg-amber-500/5 blur-[100px] rounded-full" />
       
       <div className="max-w-5xl mx-auto px-6 w-full">
         <FadeUp>
-          <div className="flex flex-col items-center text-center gap-4 mb-16">
+          <div className="flex flex-col items-center text-center gap-4 mb-20">
             <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-primary bg-primary/5 px-3 py-1 rounded-full border border-primary/10">
               Selected Works
             </span>
@@ -26,143 +24,133 @@ export default function Projects() {
           </div>
         </FadeUp>
 
-        {/* Featured projects */}
-        <StaggerContainer className="grid md:grid-cols-2 gap-8">
-          {featured.map((project, idx) => (
-            <StaggerItem
-              key={project.slug}
-              className="group glass-card rounded-3xl overflow-hidden flex flex-col hover:-translate-y-2 transition-all duration-500"
-            >
-              {/* Header: Image Slider or Abstract Gradient */}
-              {project.imageUrls && project.imageUrls.length > 0 ? (
-                <div className="h-48 sm:h-56 relative overflow-hidden bg-black/10">
-                  <ImageSlider images={project.imageUrls} />
-                </div>
-              ) : (
-                <div className={`h-48 sm:h-56 relative overflow-hidden flex items-center justify-center`}>
-                  <div className={`absolute inset-0 opacity-20 group-hover:scale-110 transition-transform duration-700 ${
-                    idx % 4 === 0 ? "bg-gradient-to-br from-primary via-blue-400 to-emerald-400" :
-                    idx % 4 === 1 ? "bg-gradient-to-br from-amber-400 via-orange-400 to-primary" :
-                    idx % 4 === 2 ? "bg-gradient-to-br from-emerald-400 via-teal-400 to-blue-400" :
-                    "bg-gradient-to-br from-purple-400 via-primary to-blue-400"
-                  }`} />
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.4)_0%,transparent_100%)]" />
-                  <div className="relative z-10 text-text-primary/10 font-black text-6xl tracking-tighter select-none group-hover:scale-125 transition-transform duration-500 group-hover:text-primary/20">
-                    0{idx + 1}
+        {/* Project List */}
+        <div className="flex flex-col gap-24 md:gap-32">
+          {featuredProjects.map((project, idx) => {
+            const isEven = idx % 2 === 0;
+            return (
+              <FadeUp key={project.slug} delay={idx * 0.1}>
+                <div>
+                  {/* Project Label e.g. Project 1 / Project 2 */}
+                  <div className={`text-xs font-bold tracking-[0.2em] text-text-muted mb-4 uppercase ${isEven ? 'text-left' : 'text-right'}`}>
+                    Project {idx + 1}
                   </div>
-                </div>
-              )}
 
-              <div className="p-8 flex flex-col gap-4 flex-1">
-                <div className="flex items-start justify-between gap-4">
-                  <h3 className="font-bold text-2xl tracking-tight text-text-primary group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <span className="flex-shrink-0 text-[10px] font-black text-text-muted bg-border/40 rounded-full px-3 py-1 uppercase tracking-widest">
-                    {project.year}
-                  </span>
-                </div>
-
-                <p className="text-text-secondary leading-relaxed flex-1 text-pretty opacity-80 group-hover:opacity-100 transition-opacity">
-                  {project.description}
-                </p>
-
-                {/* Tags */}
-                <ul className="flex flex-wrap gap-2 mt-2">
-                  {project.tags.slice(0, 4).map((tag) => (
-                    <li
-                      key={tag}
-                      className="rounded-full border border-border/50 bg-white/40 px-3 py-1 text-[10px] font-bold text-text-secondary uppercase tracking-wider"
-                    >
-                      {tag}
-                    </li>
-                  ))}
-                  {project.tags.length > 4 && (
-                    <li className="text-[10px] font-bold text-text-muted px-1 py-1 uppercase tracking-wider">
-                      +{project.tags.length - 4} more
-                    </li>
-                  )}
-                </ul>
-
-                {/* Links */}
-                {(project.liveUrl || project.githubUrl) && (
-                  <div className="flex items-center gap-6 pt-6 border-t border-border/50 mt-2">
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-xs font-bold text-primary hover:gap-3 transition-all"
+                  {/* Card Container */}
+                  <div className="glass-card rounded-[2.5rem] p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-16 hover:-translate-y-1 transition-all duration-500">
+                    {/* Image Column */}
+                    <div className={`w-full md:w-1/2 flex justify-center items-center ${isEven ? 'md:order-1' : 'md:order-2'}`}>
+                      {/* Shadow wrapper to cast shadow for the clipped shape */}
+                      <div 
+                        className="relative w-full aspect-[16/10] max-w-[380px] p-2"
+                        style={{ 
+                          filter: 'drop-shadow(0 15px 25px rgba(30, 58, 138, 0.15))' 
+                        }}
                       >
-                        <ExternalLink className="h-4 w-4" />
-                        Explore Live
-                      </a>
-                    )}
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-xs font-bold text-text-muted hover:text-text-primary transition-colors"
-                      >
-                        <GitFork className="h-4 w-4" />
-                        View Code
-                      </a>
-                    )}
-                  </div>
-                )}
-              </div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
-
-        {/* Other projects */}
-        {rest.length > 0 && (
-          <FadeUp delay={0.2} className="mt-20">
-            <div className="flex items-center gap-4 mb-8">
-              <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-text-muted">
-                Archive & Experiments
-              </h3>
-              <div className="h-[1px] flex-1 bg-border/50" />
-            </div>
-            <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {rest.map((project) => (
-                <StaggerItem
-                  key={project.slug}
-                  className="glass-card rounded-2xl overflow-hidden flex flex-col hover:-translate-y-1 transition-all"
-                >
-                  {project.imageUrls && project.imageUrls.length > 0 && (
-                    <div className="w-full h-40 relative border-b border-border/50 bg-black/10">
-                      <ImageSlider images={project.imageUrls} />
-                    </div>
-                  )}
-                  <div className="p-6 flex flex-col gap-4 flex-1">
-                    <div className="flex items-start justify-between gap-4">
-                      <h3 className="font-bold text-lg leading-tight text-text-primary">
-                        {project.title}
-                      </h3>
-                      <span className="flex-shrink-0 text-[10px] font-bold text-text-muted">
-                        {project.year}
-                      </span>
-                    </div>
-                    <p className="text-sm text-text-secondary leading-relaxed flex-1">{project.summary}</p>
-                    <ul className="flex flex-wrap gap-2">
-                      {project.tags.slice(0, 3).map((tag) => (
-                        <li
-                          key={tag}
-                          className="text-[10px] font-bold text-primary uppercase tracking-wider"
+                        {/* Clipped container */}
+                        <div 
+                          className="w-full h-full bg-slate-200/50 dark:bg-slate-800/50 overflow-hidden"
+                          style={{ 
+                            clipPath: 'url(#project-clip-path)',
+                          }}
                         >
-                          #{tag}
-                        </li>
-                      ))}
-                    </ul>
+                          {project.imageUrls && project.imageUrls.length > 0 ? (
+                            <ImageSlider images={project.imageUrls} />
+                          ) : (
+                            <div className={`w-full h-full relative flex items-center justify-center bg-gradient-to-br ${
+                              idx % 4 === 0 ? "from-primary via-blue-400 to-emerald-400" :
+                              idx % 4 === 1 ? "from-amber-400 via-orange-400 to-primary" :
+                              idx % 4 === 2 ? "from-emerald-400 via-teal-400 to-blue-400" :
+                              "from-purple-400 via-primary to-blue-400"
+                            } opacity-90`}>
+                              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.3)_0%,transparent_100%)]" />
+                              <div className="relative z-10 text-white/20 font-black text-7xl tracking-tighter select-none">
+                                0{idx + 1}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Details Column */}
+                    <div className={`w-full md:w-1/2 flex flex-col gap-6 ${isEven ? 'md:order-2' : 'md:order-1'}`}>
+                      <div className="flex flex-col gap-2">
+                        <div className="flex items-start justify-between gap-4">
+                          <h3 className="font-bold text-2xl sm:text-3xl tracking-tight text-text-primary hover:text-primary transition-colors mb-0">
+                            {project.title}
+                          </h3>
+                          <span className="flex-shrink-0 text-[10px] font-black text-text-muted bg-border/40 rounded-full px-3 py-1 uppercase tracking-widest mt-1">
+                            {project.year}
+                          </span>
+                        </div>
+                        {project.summary && (
+                          <p className="text-sm font-semibold text-primary/85 italic tracking-wide">
+                            {project.summary}
+                          </p>
+                        )}
+                      </div>
+
+                      <p className="text-text-secondary leading-relaxed text-pretty opacity-90 hover:opacity-100 transition-opacity">
+                        {project.description}
+                      </p>
+
+                      {/* Tags */}
+                      <ul className="flex flex-wrap gap-2">
+                        {project.tags.map((tag) => (
+                          <li
+                            key={tag}
+                            className="rounded-full border border-border/50 bg-white/40 px-3 py-1 text-[10px] font-bold text-text-secondary uppercase tracking-wider"
+                          >
+                            {tag}
+                          </li>
+                        ))}
+                      </ul>
+
+                      {/* Links */}
+                      {(project.liveUrl || project.githubUrl) && (
+                        <div className="flex items-center gap-6 pt-4 border-t border-border/50">
+                          {project.liveUrl && (
+                            <a
+                              href={project.liveUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 text-xs font-bold text-primary hover:gap-3 transition-all"
+                            >
+                              <ExternalLink className="h-4 w-4" />
+                              Explore Live
+                            </a>
+                          )}
+                          {project.githubUrl && (
+                            <a
+                              href={project.githubUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 text-xs font-bold text-text-muted hover:text-text-primary transition-colors"
+                            >
+                              <GitFork className="h-4 w-4" />
+                              View Code
+                            </a>
+                          )}
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
-          </FadeUp>
-        )}
+                </div>
+              </FadeUp>
+            );
+          })}
+        </div>
       </div>
+
+      {/* SVG Clip Path Definition */}
+      <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true" focusable="false">
+        <defs>
+          <clipPath id="project-clip-path" clipPathUnits="objectBoundingBox">
+            <path d="M 0,0.15 Q 0.5,-0.05 1,0.15 L 1,0.85 Q 0.5,1.05 0,0.85 Z" />
+          </clipPath>
+        </defs>
+      </svg>
     </section>
   );
 }

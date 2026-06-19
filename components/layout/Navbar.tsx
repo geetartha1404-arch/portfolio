@@ -45,7 +45,8 @@ export default function Navbar() {
       >
         <header
           className={cn(
-            "w-full max-w-3xl rounded-full transition-all duration-300",
+            "w-full max-w-3xl transition-all duration-300",
+            menuOpen ? "rounded-3xl" : "rounded-full",
             atTop
               ? "bg-white/10 backdrop-blur-md border border-white/20 shadow-lg"
               : "bg-[rgba(15,15,30,0.72)] backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/20"

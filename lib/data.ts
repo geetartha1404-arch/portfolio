@@ -131,9 +131,9 @@ export const experience: Experience[] = [
   {
     company: "Emozi Technologies",
     role: "AI Automation & Digital Marketing Intern",
-    startDate: "Nov 2024",
-    endDate: "Mar 2025",
-    location: "Remote",
+    startDate: "Mar 2026",
+    endDate: "Aug 2026",
+    location: "Guwahati, Assam",
     description: [
       "Designed and deployed a no-code AI workflow for a healthtech client, replacing 3 manual processes and reducing turnaround time by ~60%.",
       "Automated the migration of 1,000+ blog posts from Systeme.io to WordPress, exporting structured data to Google Sheets for QA.",
@@ -151,8 +151,8 @@ export const experience: Experience[] = [
   {
     company: "Ultracare Diagnostic Centre",
     role: "Radiography Technician Intern",
-    startDate: "Jun 2024",
-    endDate: "Dec 2024",
+    startDate: "Jun 2025",
+    endDate: "Dec 2025",
     location: "Guwahati, Assam",
     description: [
       "Operated diagnostic imaging equipment and assisted radiologists in acquiring and processing patient scans.",
@@ -308,7 +308,7 @@ export const projects: Project[] = [
       "/images/projects/Web_Building.jpeg",
       "/images/projects/Web_Hosting.jpeg"
     ],
-    featured: false,
+    featured: true,
     year: 2025,
   },
   {
@@ -323,8 +323,17 @@ export const projects: Project[] = [
       "Management System",
       "Admin Panel",
     ],
-    imageUrls: ["/images/projects/Admin_panel.jpeg"],
-    featured: false,
+    imageUrls: [
+      "/images/projects/emozi_overview.jpeg",
+      "/images/projects/emozi_clients.jpeg",
+      "/images/projects/emozi_leads.jpeg",
+      "/images/projects/emozi_content.jpeg",
+      "/images/projects/emozi_blogs.jpeg",
+      "/images/projects/emozi_emails.jpeg",
+      "/images/projects/emozi_automations.jpeg",
+      "/images/projects/emozi_settings.jpeg"
+    ],
+    featured: true,
     year: 2025,
   },
 ];

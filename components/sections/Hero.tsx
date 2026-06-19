@@ -1,7 +1,6 @@
-import Link from "next/link";
 import Image from "next/image";
 import { personalInfo, socialLinks } from "@/lib/data";
-import { ArrowDown, Download, Link2, Mail } from "lucide-react";
+import { ArrowDown, Link2, Mail } from "lucide-react";
 import { FadeUp } from "@/components/ui/fade-up";
 
 const iconMap: Record<string, React.ElementType> = {
@@ -50,7 +49,7 @@ export default function Hero() {
             <div className="flex items-center gap-4 mb-16">
               <div className="w-8 h-[2px] bg-primary"></div>
               <p className="text-xl sm:text-2xl font-medium text-text-secondary tracking-tight">
-                - It's {personalInfo.name.split(' ')[0]}, {personalInfo.title.toLowerCase()}
+                - It&apos;s {personalInfo.name.split(' ')[0]}, {personalInfo.title.toLowerCase()}
               </p>
             </div>
           </FadeUp>
