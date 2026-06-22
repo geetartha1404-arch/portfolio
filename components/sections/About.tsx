@@ -5,7 +5,7 @@ import { FadeUp } from "@/components/ui/fade-up";
 export default function About() {
   const stats = [
     { value: "4+", label: "Internships completed", color: "var(--color-primary)" },
-    { value: "4", label: "Projects shipped", color: "var(--color-emerald)" },
+    { value: "5", label: "Projects shipped", color: "var(--color-emerald)" },
     { value: "6", label: "Certifications earned", color: "var(--color-amber)" },
     { value: "1K+", label: "Blog posts migrated", color: "var(--color-primary)" },
   ];

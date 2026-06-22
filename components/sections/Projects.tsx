@@ -35,44 +35,30 @@ export default function Projects() {
                   <div className={`text-xs font-bold tracking-[0.2em] text-text-muted mb-4 uppercase ${isEven ? 'text-left' : 'text-right'}`}>
                     Project {idx + 1}
                   </div>
-
+ 
                   {/* Card Container */}
                   <div className="glass-card rounded-[2.5rem] p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-16 hover:-translate-y-1 transition-all duration-500">
                     {/* Image Column */}
                     <div className={`w-full md:w-1/2 flex justify-center items-center ${isEven ? 'md:order-1' : 'md:order-2'}`}>
-                      {/* Shadow wrapper to cast shadow for the clipped shape */}
-                      <div 
-                        className="relative w-full aspect-[16/10] max-w-[380px] p-2"
-                        style={{ 
-                          filter: 'drop-shadow(0 15px 25px rgba(30, 58, 138, 0.15))' 
-                        }}
-                      >
-                        {/* Clipped container */}
-                        <div 
-                          className="w-full h-full bg-slate-200/50 dark:bg-slate-800/50 overflow-hidden"
-                          style={{ 
-                            clipPath: 'url(#project-clip-path)',
-                          }}
-                        >
-                          {project.imageUrls && project.imageUrls.length > 0 ? (
-                            <ImageSlider images={project.imageUrls} />
-                          ) : (
-                            <div className={`w-full h-full relative flex items-center justify-center bg-gradient-to-br ${
-                              idx % 4 === 0 ? "from-primary via-blue-400 to-emerald-400" :
-                              idx % 4 === 1 ? "from-amber-400 via-orange-400 to-primary" :
-                              idx % 4 === 2 ? "from-emerald-400 via-teal-400 to-blue-400" :
-                              "from-purple-400 via-primary to-blue-400"
-                            } opacity-90`}>
-                              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.3)_0%,transparent_100%)]" />
-                              <div className="relative z-10 text-white/20 font-black text-7xl tracking-tighter select-none">
-                                0{idx + 1}
-                              </div>
+                      <div className="relative w-full aspect-[16/10] max-w-[420px] rounded-2xl border border-border/60 overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-500 bg-slate-200/50 dark:bg-slate-800/50">
+                        {project.imageUrls && project.imageUrls.length > 0 ? (
+                          <ImageSlider images={project.imageUrls} />
+                        ) : (
+                          <div className={`w-full h-full relative flex items-center justify-center bg-gradient-to-br ${
+                            idx % 4 === 0 ? "from-primary via-blue-400 to-emerald-400" :
+                            idx % 4 === 1 ? "from-amber-400 via-orange-400 to-primary" :
+                            idx % 4 === 2 ? "from-emerald-400 via-teal-400 to-blue-400" :
+                            "from-purple-400 via-primary to-blue-400"
+                          } opacity-90`}>
+                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.3)_0%,transparent_100%)]" />
+                            <div className="relative z-10 text-white/20 font-black text-7xl tracking-tighter select-none">
+                              0{idx + 1}
                             </div>
-                          )}
-                        </div>
+                          </div>
+                        )}
                       </div>
                     </div>
-
+ 
                     {/* Details Column */}
                     <div className={`w-full md:w-1/2 flex flex-col gap-6 ${isEven ? 'md:order-2' : 'md:order-1'}`}>
                       <div className="flex flex-col gap-2">
@@ -90,11 +76,11 @@ export default function Projects() {
                           </p>
                         )}
                       </div>
-
+ 
                       <p className="text-text-secondary leading-relaxed text-pretty opacity-90 hover:opacity-100 transition-opacity">
                         {project.description}
                       </p>
-
+ 
                       {/* Tags */}
                       <ul className="flex flex-wrap gap-2">
                         {project.tags.map((tag) => (
@@ -106,7 +92,7 @@ export default function Projects() {
                           </li>
                         ))}
                       </ul>
-
+ 
                       {/* Links */}
                       {(project.liveUrl || project.githubUrl) && (
                         <div className="flex items-center gap-6 pt-4 border-t border-border/50">
@@ -142,15 +128,6 @@ export default function Projects() {
           })}
         </div>
       </div>
-
-      {/* SVG Clip Path Definition */}
-      <svg className="absolute w-0 h-0 pointer-events-none" aria-hidden="true" focusable="false">
-        <defs>
-          <clipPath id="project-clip-path" clipPathUnits="objectBoundingBox">
-            <path d="M 0,0.15 Q 0.5,-0.05 1,0.15 L 1,0.85 Q 0.5,1.05 0,0.85 Z" />
-          </clipPath>
-        </defs>
-      </svg>
     </section>
   );
 }

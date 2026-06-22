@@ -196,6 +196,30 @@ export const experience: Experience[] = [
 
 export const projects: Project[] = [
   {
+    slug: "emozi-email-campaigning-system",
+    title: "AWS-Integrated Email Campaigning System",
+    summary:
+      "Improved Email Campaigning System with integration of AWS SES & SNS into an Email Tab.",
+    description:
+      "Integrated AWS Simple Email Service (SES) and Simple Notification Service (SNS) into the Email Tab of the Emozi Digital Admin Panel. This revamped the email campaigning system, adding features like automated bounce and complaint tracking, dynamic template management, list contacts segmentation, and real-time delivery statistics to ensure high email deliverability and analytics transparency.",
+    tags: [
+      "AWS SES",
+      "AWS SNS",
+      "Email Marketing",
+      "Notification Service",
+      "Admin Panel Integration",
+      "Analytics Dashboard",
+    ],
+    imageUrls: [
+      "/images/projects/emozi_emails_campaigns.jpeg",
+      "/images/projects/emozi_emails_contacts.jpeg",
+      "/images/projects/emozi_emails_stats.jpeg",
+      "/images/projects/emozi_emails_template.jpeg"
+    ],
+    featured: true,
+    year: 2025,
+  },
+  {
     slug: "healthtech-ai-workflow",
     title: "AI Workflow for Healthtech Automation",
     summary:
